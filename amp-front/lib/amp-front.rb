@@ -28,3 +28,5 @@ end
 autoload :ERB,     'erb'
 autoload :Maruku,  'amp-front/third_party/maruku.rb'
 autoload :Trollop, 'amp-front/third_party/trollop.rb'
+
+require 'amp-front/version'

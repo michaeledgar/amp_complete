@@ -57,4 +57,5 @@ module Amp
   end
 end
 
-require 'amp-hg/repository.rb'
+require 'amp-hg/repository'
+require 'amp-hg/version'

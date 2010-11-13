@@ -34,3 +34,5 @@ module Amp
     end
   end
 end
+
+require 'amp-core/version'

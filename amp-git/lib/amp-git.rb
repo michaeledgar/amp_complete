@@ -4,7 +4,7 @@ require 'zlib'
 require 'stringio'
 
 # Must require the GitPicker or it won't be found.
-require 'amp-git/repository.rb'
+require 'amp-git/repository'
 
 module Amp
   module Git
@@ -37,3 +37,5 @@ module Amp
     end
   end
 end
+
+require 'amp-git/version'
