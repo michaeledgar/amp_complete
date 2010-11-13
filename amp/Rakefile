@@ -4,11 +4,11 @@ require 'rake'
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
-    gem.name = 'amp_redux'
+    gem.name = 'amp'
     gem.summary = %Q{A meta-VCS in Ruby, harnessing Ruby's strengths.}
     gem.description = %Q{This package is a small wrapper around several core amp plugins.}
     gem.email = 'michael.j.edgar@dartmouth.edu'
-    gem.homepage = 'http://github.com/michaeledgar/amp_redux'
+    gem.homepage = 'http://github.com/michaeledgar/amp'
     gem.authors = ['Michael Edgar']
     gem.add_dependency 'amp-front', '>= 0.1.0'
     gem.add_dependency 'amp-core', '>= 0.1.0'
