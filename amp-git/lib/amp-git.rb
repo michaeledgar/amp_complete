@@ -4,6 +4,8 @@ require 'zlib'
 require 'stringio'
 
 # Must require the GitPicker or it won't be found.
+require 'amp-front'
+require 'amp-core'
 require 'amp-git/repository'
 
 module Amp

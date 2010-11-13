@@ -3,8 +3,6 @@ puts 'Loading amp-hg...'
 require 'zlib'
 require 'stringio'
 
-# Must require the HgPicker or it won't be found.
-
 module Amp
   module Mercurial
     module Diffs
@@ -57,5 +55,8 @@ module Amp
   end
 end
 
+# Must require the HgPicker or it won't be found.
+require 'amp-front'
+require 'amp-core'
 require 'amp-hg/repository'
 require 'amp-hg/version'

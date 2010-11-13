@@ -16,7 +16,7 @@ require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
 describe Amp::Dispatch::Runner do
   before do
-    @runner = Amp::Dispatch::Runner.new(['--version'], :ampfile => "NO SUCH FILE@@@@@@@@@@@@@@@@@@")
+    @runner = Amp::Dispatch::Runner.new(['--version', '--no-ampfile'])
   end
 
   describe '#run!' do
@@ -34,9 +34,10 @@ describe Amp::Dispatch::Runner do
       mock_command_class.should_receive(:new).and_return(mock_command)
       mock_command.should_receive(:collect_options).and_return([{:verbose => true}, ['--verbose']])
       mock_command.should_receive(:call).with(
-          {:verbose => true, :help => false, :version => false}, ['--verbose'])
+          {:verbose => true, :help => false, :version => false, :ampfile => 'ampfile',
+           :"no-ampfile_given" => true, :"no-ampfile" => true}, ['--verbose'])
       
-      runner = Amp::Dispatch::Runner.new(['tester', '--verbose'])
+      runner = Amp::Dispatch::Runner.new(['--no-ampfile', 'tester', '--verbose'])
       runner.run!
     end
 
@@ -51,9 +52,10 @@ describe Amp::Dispatch::Runner do
       mock_command_class.should_receive(:new).and_return(mock_command)
       mock_command.should_receive(:collect_options).and_return([{}, []])
       mock_command.should_receive(:call).with(
-          {:help => false, :version => false}, [])
+          {:help => false, :version => false, :"no-ampfile_given" => true,
+           :"no-ampfile" => true, :ampfile => 'ampfile'}, [])
 
-      runner = Amp::Dispatch::Runner.new([''])
+      runner = Amp::Dispatch::Runner.new(['--no-ampfile'])
       runner.run!
     end
   end
@@ -105,7 +107,8 @@ describe Amp::Dispatch::Runner do
 
     it 'returns the parsed options' do
       options, arguments = @runner.collect_options(['help', 'please'])
-      options.should == {:version => false, :help => false}
+      options.should == {:version => false, :help => false,
+                         :ampfile => 'ampfile', :"no-ampfile" => false}
     end
 
     it 'returns the unparsed arguments' do

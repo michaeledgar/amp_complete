@@ -1,5 +1,6 @@
 puts "Loading amp-core..."
 
+require 'amp-front'
 require 'amp-core/command_ext/repository_loading'
 require 'amp-core/repository/repository.rb'
 require 'amp-core/repository/generic_repo_picker.rb'

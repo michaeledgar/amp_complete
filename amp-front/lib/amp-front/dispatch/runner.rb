@@ -23,8 +23,10 @@ module Amp
       end
     
       def run!
+        p @args
         global_opts, arguments = collect_options(@args)
-        load_ampfile!
+        p global_opts
+        load_ampfile!(global_opts[:ampfile]) unless global_opts[:"no-ampfile"]
         load_plugins!
 
         command_class = Amp::Command.for_name(arguments.join(' '))
@@ -40,8 +42,7 @@ module Amp
       
       # Loads the ampfile (or whatever it's specified as) from the
       # current directory or a parent directory.
-      def load_ampfile!(in_dir = Dir.pwd)
-        file = @opts[:ampfile] || 'ampfile'
+      def load_ampfile!(file, in_dir = Dir.pwd)
         variations = [file, file[0,1].upcase + file[1..-1]] # include titlecase
         to_load = variations.find {|x| File.exist?(File.join(in_dir, x))}
         if to_load
@@ -77,6 +78,8 @@ module Amp
         _, hash = Trollop::options(argv) do
           banner "Amp - some more crystal, sir?"
           version "Amp version #{Amp::VERSION} (#{Amp::VERSION_TITLE})"
+          opt :"no-ampfile", "Disables ampfiles.", :type => :flag
+          opt :ampfile, "Which file to load as an ampfile", :type => :string, :default => "ampfile"
           stop_on_unknown
         end
         [hash, argv]
