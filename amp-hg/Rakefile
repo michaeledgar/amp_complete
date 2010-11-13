@@ -1,25 +1,6 @@
 require 'rubygems'
 require 'rake'
 
-begin
-  require 'jeweler'
-  Jeweler::Tasks.new do |gem|
-    gem.name = "amp-hg"
-    gem.summary = %Q{The mercurial plugin for Amp.}
-    gem.description = %Q{This gem provides mercurial support to Amp. It is bundled with Amp itself.}
-    gem.email = "michael.j.edgar@dartmouth.edu"
-    gem.homepage = "http://github.com/michaeledgar/amp-hg"
-    gem.authors = ["Michael Edgar"]
-    gem.add_development_dependency "rspec", ">= 1.2.9"
-    gem.add_development_dependency "yard", ">= 0"
-    gem.add_development_dependency "cucumber", ">= 0"
-    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
-  end
-  Jeweler::GemcutterTasks.new
-rescue LoadError
-  puts "Jeweler (or a dependency) not available. Install it with: gem install jeweler"
-end
-
 require 'spec/rake/spectask'
 Spec::Rake::SpecTask.new(:spec) do |spec|
   spec.libs << 'lib' << 'spec'
