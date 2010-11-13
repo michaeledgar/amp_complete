@@ -8,9 +8,9 @@ require 'rake/gempackagetask'
 PROJECTS = %w(amp-front amp-core amp-git amp-hg amp)
 
 desc 'Run all tests by default'
-task :default => %w(test)
+task :default => %w(test spec features)
 
-%w(test package gem).each do |task_name|
+%w(test spec features package gem).each do |task_name|
   desc "Run #{task_name} task for all projects"
   task task_name do
     errors = []
