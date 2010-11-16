@@ -1,8 +1,9 @@
 module Amp
-  VERSION = '0.0.1'
-  VERSION_TITLE = 'Koyaanisqatsi'
-
   $LOAD_PATH.unshift(File.expand_path(File.dirname(__FILE__)))
+  require 'amp-front/version'
+  
+  VERSION = Amp::Front::VERSION
+  VERSION_TITLE = 'Koyaanisqatsi'
 
   module Dispatch
     autoload :Runner, 'amp-front/dispatch/runner.rb'

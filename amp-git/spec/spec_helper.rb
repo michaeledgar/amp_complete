@@ -14,9 +14,11 @@
 
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
+DEPENDENCIES = %w(amp-front amp-core)
+DEPENDENCIES.each do |x|
+  require File.join(File.dirname(__FILE__), '..', '..', x, 'lib', x)
+end
 require 'rubygems'
-require 'amp-front'
-require 'amp-core'
 require 'amp-git'
 require 'spec'
 require 'spec/autorun'

@@ -1,5 +1,6 @@
 puts "Loading amp-core..."
 
+$LOAD_PATH.unshift(File.expand_path(File.dirname(__FILE__)))
 require 'amp-front'
 require 'amp-core/command_ext/repository_loading'
 require 'amp-core/repository/repository.rb'

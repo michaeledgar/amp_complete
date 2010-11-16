@@ -23,9 +23,7 @@ module Amp
       end
     
       def run!
-        p @args
         global_opts, arguments = collect_options(@args)
-        p global_opts
         load_ampfile!(global_opts[:ampfile]) unless global_opts[:"no-ampfile"]
         load_plugins!
 
